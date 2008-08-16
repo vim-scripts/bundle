@@ -1,6 +1,6 @@
 *bundle.txt*	Load a series of files easily
 
-Version 0.0.1
+Version 0.0.2
 Copyright (C) 2008 kana <http://whileimautomaton.net/>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -41,15 +41,16 @@ Changelog		|bundle-changelog|
 ==============================================================================
 INTRODUCTION					*bundle-introduction*
 
-Bundle is a Vim plugin to easily load a series of files which is called as
+*bundle* is a Vim plugin to easily load a series of files which is called as
 "bundle".  For example, if you often edit files foo.c, bar.txt and baz.vim in
 project named "qux", you can use "|:LoadBundle| qux" to load the files.
 
 The correspondence of bundle names and lists of files can be configured by
 static way (|g:bundle_dictionary|) and dynamic way (|bundle-events|).
 
+
 Requirements:
-- Vim 7.1.299 or later.
+- Vim 7.1.299 or later
 
 
 
@@ -60,14 +61,14 @@ INTERFACE					*bundle-interface*
 ------------------------------------------------------------------------------
 COMMANDS					*bundle-commands*
 
-:ArgsBundle[!] {name}				*:ArgsBundle*
+:ArgsBundle[!] {name}				*:ArgsBundle* *:ArgsBundle!*
 			Like |:LoadBundle|, but do |:args| with files in the
 			bundle {name}.  If [!] is given, do |:args!| instead
 			of |:args|.
 
 			{name} can be completed.
 
-:LoadBundle[!] {name}				*:LoadBundle*
+:LoadBundle[!] {name}				*:LoadBundle* *:LoadBundle!*
 			Load files in the bundle specified by {name}.
 
 			This means that files will be added to the buffer list
@@ -141,6 +142,9 @@ bundle#args({bang-p}, {name})			*bundle#args()*
 			Function version of |:ArgsBundle|, like
 			|bundle#load()|.
 
+bundle#available_bundles()			*bundle#available_bundles()*
+			Return a list of the names of available bundles.
+
 bundle#files({name})				*bundle#files()*
 			Return a list of the files in the bundle {name}.
 			If the bundle {name} is not found, empty list will be
@@ -182,6 +186,7 @@ g:bundle_dictionary				*g:bundle_dictionary*
 
 
 
+
 ==============================================================================
 LOADING STEPS					*bundle-loading-steps*
 
@@ -208,6 +213,9 @@ BUGS						*bundle-bugs*
 
 ==============================================================================
 CHANGELOG					*bundle-changelog*
+
+0.0.2	2008-08-10T20:24:17+09:00
+	- Add |bundle#available_bundles()|.
 
 0.0.1	2008-08-10T19:05:47+09:00
 	- Change the required version of Vim - 7.1.299 or later.
